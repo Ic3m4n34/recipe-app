@@ -50,7 +50,7 @@ export default {
   },
   computed: {
     favoriteCssClasses() {
-      return this.isFavorite ? 'fill-current text-yellow-400' : '';
+      return this.isFavorite ? 'fill-current text-blue-500' : '';
     },
     shortDescription() {
       return this.recipe.description.length > 50 ? `${this.recipe.description.substring(0, 50)}...` : this.recipe.description;
@@ -77,9 +77,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-
-.recipe-in-list {}
-
-</style>

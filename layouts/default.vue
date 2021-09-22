@@ -1,6 +1,6 @@
 <template>
-  <div class="layout layout--default bg-green-100 p-4 md:p-8">
-    <div>
+  <div class="layout layout--default bg-white p-4 md:p-8">
+    <div class="container mx-auto max-w-2xl">
       <Nuxt />
     </div>
   </div>

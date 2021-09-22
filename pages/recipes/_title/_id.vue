@@ -1,6 +1,6 @@
 <template>
-  <div class="recipe-detail-page container mx-auto max-w-lg">
-    <header class="flex flex-row justify-between">
+  <div class="recipe-detail-page">
+    <header class="flex flex-row justify-between items-center mb-8">
       <div>
         <nuxt-link
           to="/"
@@ -9,7 +9,7 @@
           back
         </nuxt-link>
       </div>
-      <h1 class="text-4xl text-center mb-8">
+      <h1 class="text-4xl text-center font-bold">
         {{ title }}
       </h1>
       <div>
@@ -31,17 +31,25 @@
         </svg>
       </div>
     </header>
-    <main class="mx-auto max-w-lg">
-      <ul class="mb-8">
+    <main>
+      <h2 class="text-2xl mt-4 mb-2">
+        Ingredients
+      </h2>
+      <ul class="mb-8 list-inside list-disc p-2">
         <li
           v-for="(ingredient, index) in recipe.ingredients"
           :key="index"
+          class="list"
         >
           {{ ingredient }}
         </li>
       </ul>
 
-      <p class="mb-20">
+      <h2 class="text-2xl mt-4 mb-2">
+        Description
+      </h2>
+
+      <p class="mb-20 p-2">
         {{ description }}
       </p>
 
@@ -93,6 +101,18 @@ export default {
       return null;
     }
   },
+  head() {
+    return {
+      title: `${this.recipe.title} - My Recipe App`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.recipe.description.length > 154 ? `${this.recipe.description.substring(0, 153)}...` : this.recipe.description,
+        },
+      ],
+    };
+  },
   computed: {
     deleteButtonText() {
       return this.deletionInProgress ? 'deleting...' : 'delete';
@@ -101,7 +121,7 @@ export default {
       return this.recipe.description;
     },
     favoriteCssClasses() {
-      return this.isFavorite ? 'fill-current text-yellow-400' : '';
+      return this.isFavorite ? 'fill-current text-blue-500' : '';
     },
     title() {
       return this.recipe.title;
@@ -139,9 +159,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-
-.recipe-detail-page {}
-
-</style>

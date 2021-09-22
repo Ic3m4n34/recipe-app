@@ -1,3 +1,5 @@
+const firebaseConfig = require('./firebase-config.json');
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -36,7 +38,7 @@ export default {
   googleFonts: {
     families: {
       Roboto: {
-        wght: [300, 400],
+        wght: [300, 400, 700],
       },
     },
   },
@@ -47,14 +49,7 @@ export default {
     [
       '@nuxtjs/firebase',
       {
-        config: {
-          apiKey: 'AIzaSyA9h3jhDm6kinnQaFsvLWn_jGSimZAkr6I',
-          authDomain: 'brandung-recipe-app.firebaseapp.com',
-          projectId: 'brandung-recipe-app',
-          storageBucket: 'brandung-recipe-app.appspot.com',
-          messagingSenderId: '225835236394',
-          appId: '1:225835236394:web:6a0e3e4ef2a9eed4dd1753',
-        },
+        config: firebaseConfig,
         services: {
           firestore: {
             enablePersistence: true,

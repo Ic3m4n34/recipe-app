@@ -1,13 +1,20 @@
 <template>
-  <main class="new-recipe container mx-auto max-w-lg">
-    <h1 class="text-4xl text-center mb-8">
+  <main class="new-recipe">
+    <h1 class="text-4xl text-center font-bold mb-8">
       Add new recipe
     </h1>
+
+    <h2 class="text-2xl mb-2">
+      Title
+    </h2>
     <input
       v-model="title"
       placeholder="Title"
-      class="w-full border border-gray-300 rounded-md p-2 mb-2"
+      class="w-full border border-gray-300 rounded-md p-2 mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
     />
+    <h2 class="text-2xl mt-4 mb-2">
+      Ingredients
+    </h2>
     <div class="new-recipe__ingredients flex flex-col">
       <input
         v-for="(ingredient, index) in ingredients"
@@ -15,7 +22,7 @@
         ref="ingredients"
         v-model="ingredients[index]"
         placeholder="Ingredient"
-        class="w-full border border-gray-300 rounded-md p-2 mb-2"
+        class="w-full border border-gray-300 rounded-md p-2 mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         @keyup.enter="addNewIngredient"
       />
       <div class="flex flex-row justify-end mb-4">
@@ -26,11 +33,14 @@
           add new ingredient
         </button>
       </div>
+      <h2 class="text-2xl mt-4 mb-2">
+        Description
+      </h2>
       <textarea
         v-model="description"
         placeholder="Description"
         rows="5"
-        class="w-full border border-gray-300 rounded-md p-2 mb-8"
+        class="w-full border border-gray-300 rounded-md p-2 mb-8 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         @keyup.enter="saveNewRecipe"
       />
     </div>

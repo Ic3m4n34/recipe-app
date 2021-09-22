@@ -1,6 +1,6 @@
 <template>
   <main class="edit-recipe">
-    <h1 class="text-4xl text-center mb-8">
+    <h1 class="text-4xl text-center font-bold mb-8">
       Edit
     </h1>
     <h2 class="text-2xl mb-2">
@@ -9,7 +9,7 @@
     <input
       v-model="recipe.title"
       placeholder="Title"
-      class="w-full border border-gray-300 rounded-md p-2 mb-2"
+      class="w-full border border-gray-300 rounded-md p-2 mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
     />
     <h2 class="text-2xl mt-8 mb-2">
       Ingredients
@@ -21,7 +21,7 @@
         ref="ingredients"
         v-model="recipe.ingredients[index]"
         placeholder="Ingredient"
-        class="w-full border border-gray-300 rounded-md p-2 mb-2"
+        class="w-full border border-gray-300 rounded-md p-2 mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         @keyup.enter="addNewIngredient"
       />
       <div class="flex flex-row justify-end mb-4">
@@ -40,7 +40,7 @@
         v-model="recipe.description"
         placeholder="Description"
         rows="5"
-        class="w-full border border-gray-300 rounded-md p-2 mb-8"
+        class="w-full border border-gray-300 rounded-md p-2 mb-8 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
       />
     </div>
     <div class="new-recipe__buttons flex flex-row justify-between">
@@ -98,13 +98,16 @@ export default {
     },
   },
   methods: {
-    addNewIngredient() {
-      /* console.log('l', this.ingredients[this.ingredients.length - 1]);
-      const lastIngredientEmtpy = this.ingredients[this.ingredients.length - 1].length === null || this.ingredients[this.ingredients.length - 1].length === '';
+    async addNewIngredient() {
+      const lastIngredientElement = this.recipe.ingredients[this.recipe.ingredients.length - 1];
+      const lastIngredientEmtpy = lastIngredientElement.length === 0;
       if (lastIngredientEmtpy) {
-        this.$refs.ingredients[0].focus();
-      } */
-      this.ingredients.push('');
+        this.$refs.ingredients[this.recipe.ingredients.length - 1].focus();
+      } else {
+        this.recipe.ingredients.push('');
+        await this.$nextTick();
+        this.$refs.ingredients[this.recipe.ingredients.length - 1].focus();
+      }
     },
     async saveNewRecipe() {
       if (this.formValid) {
@@ -115,13 +118,13 @@ export default {
           await this.$fire.firestore
             .collection('recipes')
             .doc(this.recipe.id)
-            .set({
+            .update({
               id: this.recipe.id,
-              title: this.title,
-              ingredients: this.ingredients,
-              description: this.description,
-              favorite: false,
-              createdAt: timestamp,
+              title: this.recipe.title,
+              ingredients: this.recipe.ingredients,
+              description: this.recipe.description,
+              favorite: this.recipe.favorite,
+              updatedAt: timestamp,
             });
 
           console.info('🍕 recipe added');
