@@ -49,7 +49,7 @@
         to="/"
         class="bg-blue-500 hover:bg-blue-700 text-white text-base px-6 py-2 rounded-md"
       >
-        back
+        Back
       </nuxt-link>
 
       <button
@@ -79,7 +79,7 @@ export default {
   },
   computed: {
     saveButtonText() {
-      return this.saving ? 'saving...' : 'save';
+      return this.saving ? 'saving...' : 'Save';
     },
     formValid() {
       return this.title.length > 2 && this.ingredients.length > 0 && this.description.length > 4;

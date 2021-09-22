@@ -1,9 +1,20 @@
 <template>
-  <li class="recipe-in-list relative p-4 bg-white rounded-md shadow-md mb-4">
-    <article>
-      <div class="absolute top-5 right-5">
+  <li class="recipe-in-list relative p-4 bg-white rounded-md shadow-md mb-8">
+    <article class="flex flex-row justify-between">
+      <nuxt-link
+        :to="slug"
+        class="block"
+      >
+        <h2 class="text-2xl mb-2">
+          {{ recipe.title }}
+        </h2>
+        <p>
+          {{ shortDescription }}
+        </p>
+      </nuxt-link>
+      <div>
         <svg
-          class="w-6 h-6 cursor-pointer"
+          class="w-6 h-6 cursor-pointer block ml-12"
           :class="favoriteCssClasses"
           fill="none"
           stroke="currentColor"
@@ -19,17 +30,6 @@
           />
         </svg>
       </div>
-      <nuxt-link
-        :to="slug"
-        class="block"
-      >
-        <h2 class="text-2xl mb-2">
-          {{ recipe.title }}
-        </h2>
-        <p>
-          {{ shortDescription }}
-        </p>
-      </nuxt-link>
     </article>
   </li>
 </template>

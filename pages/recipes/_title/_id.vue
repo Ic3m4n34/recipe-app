@@ -6,7 +6,7 @@
           to="/"
           class="bg-blue-500 hover:bg-blue-700 text-white text-base px-6 py-2 rounded-md"
         >
-          back
+          Back
         </nuxt-link>
       </div>
       <h1 class="text-4xl text-center font-bold">
@@ -65,7 +65,7 @@
           :to="`/edit-recipe/${recipe.id}`"
           class="bg-blue-500 hover:bg-blue-700 text-white text-base px-6 py-2 rounded-md"
         >
-          edit
+          Edit
         </nuxt-link>
       </div>
     </main>
@@ -115,7 +115,7 @@ export default {
   },
   computed: {
     deleteButtonText() {
-      return this.deletionInProgress ? 'deleting...' : 'delete';
+      return this.deletionInProgress ? 'deleting...' : 'Delete';
     },
     description() {
       return this.recipe.description;

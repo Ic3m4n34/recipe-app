@@ -48,7 +48,7 @@
         to="/"
         class="bg-blue-500 hover:bg-blue-700 text-white text-base px-6 py-2 rounded-md"
       >
-        back
+        Back
       </nuxt-link>
 
       <button
@@ -91,7 +91,7 @@ export default {
   },
   computed: {
     saveButtonText() {
-      return this.saving ? 'saving...' : 'save';
+      return this.saving ? 'saving...' : 'Save';
     },
     formValid() {
       return this.recipe.title.length > 2 && this.recipe.ingredients.length > 0 && this.recipe.description.length > 4;
@@ -140,9 +140,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-
-.edit-recipe {}
-
-</style>
