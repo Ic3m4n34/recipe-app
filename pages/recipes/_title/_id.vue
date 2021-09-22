@@ -1,5 +1,5 @@
 <template>
-  <div class="recipe-detail-page max-w-lg">
+  <div class="recipe-detail-page container mx-auto max-w-lg">
     <header class="flex flex-row justify-between">
       <div>
         <nuxt-link

@@ -31,6 +31,7 @@
         placeholder="Description"
         rows="5"
         class="w-full border border-gray-300 rounded-md p-2 mb-8"
+        @keyup.enter="saveNewRecipe"
       />
     </div>
     <div class="new-recipe__buttons flex flex-row justify-between">
@@ -74,9 +75,6 @@ export default {
       return this.title.length > 2 && this.ingredients.length > 0 && this.description.length > 4;
     },
   },
-  mounted() {
-    console.log(this.$refs);
-  },
   methods: {
     async addNewIngredient() {
       const lastIngredientElement = this.ingredients[this.ingredients.length - 1];
@@ -94,6 +92,7 @@ export default {
         this.saving = true;
         const recipeId = uuidv4();
         const timestamp = +new Date();
+        const ingredients = this.ingredients.filter((ingredient) => ingredient.length > 0);
 
         try {
           await this.$fire.firestore
@@ -102,7 +101,7 @@ export default {
             .set({
               id: recipeId,
               title: this.title,
-              ingredients: this.ingredients,
+              ingredients,
               description: this.description,
               favorite: false,
               createdAt: timestamp,
@@ -121,9 +120,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-
-.new-recipe {}
-
-</style>
