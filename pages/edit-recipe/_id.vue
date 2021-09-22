@@ -89,6 +89,18 @@ export default {
       return null;
     }
   },
+  head() {
+    return {
+      title: `Edit: ${this.recipe.title} - My Recipe App`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `Edit the recipe for ${this.recipe.title} here!`,
+        },
+      ],
+    };
+  },
   computed: {
     saveButtonText() {
       return this.saving ? 'saving...' : 'Save';

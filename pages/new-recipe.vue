@@ -77,6 +77,18 @@ export default {
       saving: false,
     };
   },
+  head() {
+    return {
+      title: 'Create New Recipe - My Recipe App',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Create a new recipe now!',
+        },
+      ],
+    };
+  },
   computed: {
     saveButtonText() {
       return this.saving ? 'saving...' : 'Save';

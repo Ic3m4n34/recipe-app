@@ -35,5 +35,17 @@ export default {
       recipes,
     };
   },
+  head() {
+    return {
+      title: 'My Recipe App',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `Here you find all of our ${this.recipes.length} delicious recipes. Check out our awesome recipes now!`,
+        },
+      ],
+    };
+  },
 };
 </script>

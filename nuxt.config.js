@@ -33,6 +33,7 @@ export default {
   buildModules: [
     '@nuxtjs/eslint-module',
     '@nuxtjs/google-fonts',
+    '@nuxtjs/pwa',
     '@nuxtjs/tailwindcss',
   ],
   googleFonts: {
